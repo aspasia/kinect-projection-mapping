@@ -26,6 +26,7 @@ public:
     void drawPointCloud();
     
     ofxKinect kinect;
+    ofVideoPlayer videoPlayer;
     
     
 #ifdef USE_TWO_KINECTS

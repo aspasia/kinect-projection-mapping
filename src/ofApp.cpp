@@ -34,6 +34,10 @@ void ofApp::setup(){
     bDrawPointCloud = false;
     
     videoPlayer.load("EmpireDRESS.mp4");
+    if (!videoPlayer.isLoaded()) {
+       ofLogNotice() << "ERROR: Could not load video";
+    }
+    
 }
 
 //--------------------------------------------------------------
@@ -91,14 +95,16 @@ void ofApp::draw(){
         easyCam.end();
     } else {
         // draw from the live kinect
-        // kinect.drawDepth(10, 10, 400, 300);
-         kinect.draw(420, 10, 400, 300);
+        kinect.drawDepth(10, 10, 400, 300);
+        kinect.draw(420, 10, 400, 300);
         
-        // grayImage.draw(10, 320, 400, 300);
+        grayImage.draw(10, 320, 400, 300);
         contourFinder.draw(10, 320, 400, 300);
         
-        blob.draw(10,10);
+        blob.draw(420, 310);
         
+        videoPlayer.draw(420,320, 400,300);
+        videoPlayer.play();
     }
 }
 
