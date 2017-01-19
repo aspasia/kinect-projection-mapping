@@ -33,10 +33,7 @@ void ofApp::setup(){
     // start from the front
     bDrawPointCloud = false;
     
-    videoPlayer.load("EmpireDRESS.mp4");
-    if (!videoPlayer.isLoaded()) {
-       ofLogNotice() << "ERROR: Could not load video";
-    }
+    
     
 }
 
@@ -80,8 +77,6 @@ void ofApp::update(){
         // find contours which are between the size of 20 pixels and 1/3 the w*h pixels.
         // also, find holes is set to true so we will get interior contours as well....
         contourFinder.findContours(grayImage, 10, (kinect.width*kinect.height)/2, 20, false);
-        
-        videoPlayer.update();
     }
 }
 
@@ -103,8 +98,6 @@ void ofApp::draw(){
         
         blob.draw(420, 310);
         
-        videoPlayer.draw(420,320, 400,300);
-        videoPlayer.play();
     }
 }
 
